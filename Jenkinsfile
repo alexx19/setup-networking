@@ -10,8 +10,6 @@ pipeline {
     {
         stage('stage') {
             steps {
-                sh 'pip3 install --upgrade --user awscli'
-                sh 'aws --version'
                 sh 'chmod +x ./integration/stage.sh'
                 sh './integration/stage.sh'
             }
