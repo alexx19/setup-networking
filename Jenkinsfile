@@ -1,5 +1,4 @@
 pipeline {
-
     agent any
 
     environment {
@@ -10,7 +9,9 @@ pipeline {
     stages
     {
         stage('stage') {
-            sh('./integration/stage.sh')
+            dir ('integration') {
+                sh('./stage.sh')
+            }
         }
     }
 }
