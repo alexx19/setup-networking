@@ -15,6 +15,9 @@ pipeline {
                 '''
                 sh 'chmod +x ./integration/stage.sh'
                 sh './integration/stage.sh'
+                sh '''#!/usr/bin/env bash
+                    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+                '''
             }
         }
     }
