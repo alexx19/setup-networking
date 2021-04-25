@@ -9,8 +9,10 @@ pipeline {
     stages
     {
         stage('stage') {
-            dir ('integration') {
-                sh('./stage.sh')
+            steps {
+                dir ('integration') {
+                    sh('./stage.sh')
+                }
             }
         }
     }
