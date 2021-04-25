@@ -19,7 +19,7 @@ configure_aws_cli() {
 deploy_project() {
 
     echo "Creating stack"
-    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml --capabilities CAPABILITY_NAMED_AIM --parameters $PARAMETERS
+    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://infra-networking/setup-networking.yml --capabilities CAPABILITY_NAMED_AIM --parameters $PARAMETERS
     
     echo "Finishing Deploying"
 }
