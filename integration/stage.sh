@@ -1,9 +1,9 @@
 # archivo de configuracion despliegue en stage
 #!/usr/bin/env bash
-AWS_REGION=us-east-1
-ENTERPRISE_NAME=rex
-APPLICATION_NAME=networking
-ENVIRONMENT=stage
+export AWS_REGION=us-east-1
+export ENTERPRISE_NAME=rex
+export APPLICATION_NAME=networking
+export  ENVIRONMENT=stage
 
 AWS_INFRA_CLOUDFORMATION_STACK_NAME=${ENTERPRISE_NAME}-${ENVIRONMENT}-${APPLICATION_NAME}
 
