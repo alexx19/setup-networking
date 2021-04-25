@@ -18,16 +18,16 @@ configure_aws_cli() {
     aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
     aws configure set defaul.region ${AWS_REGION}
     aws configure set defaul.output json
-    echo ${AWS_ACCESS_KEY_ID}
+
     echo  ${AWS_INFRA_CLOUDFORMATION_STACK_NAME}
 }
 
 deploy_project() {
 
-    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE
+    $( aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE )
 
     echo "Creating stack"
-    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+    $( aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml)
     
     echo "Finishing Deploying"
 }
