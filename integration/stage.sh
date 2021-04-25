@@ -12,7 +12,7 @@ export ENVIRONMENT=stage
 export AWS_INFRA_CLOUDFORMATION_STACK_NAME=${ENTERPRISE_NAME}-${ENVIRONMENT}-${APPLICATION_NAME}
 
 configure_aws_cli() {
-    echo -e "\033[7;92m configure AWS CLI"
+    echo -e "configure AWS CLI"
     aws --version
     aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}
     aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
@@ -31,9 +31,8 @@ deploy_project() {
     echo "Finishing Deploying"
 }
 
-echo "\033[42m INFO ------> CONFIGURE AWS CLI... \033[m"
+echo "INFO ------> CONFIGURE AWS CLI... "
 
 configure_aws_cli
-
-echo "\033[42m INFO ------> DEPLOYING NETWORKING...  \033[m"
+echo "INFO ------> DEPLOYING NETWORKING... "
 deploy_project

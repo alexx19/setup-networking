@@ -10,6 +10,9 @@ pipeline {
     {
         stage('stage') {
             steps {
+                sh '''
+                aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE
+                '''
                     sh 'chmod +x ./integration/stage.sh'
                     sh './integration/stage.sh'
             }
