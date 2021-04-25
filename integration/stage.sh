@@ -1,5 +1,5 @@
 # archivo de configuracion despliegue en stage
-#!/usr/bin/env bash
+#!/bin/bash
 export AWS_REGION=us-east-1
 export ENTERPRISE_NAME=rex
 export APPLICATION_NAME=networking
@@ -19,7 +19,7 @@ deploy_project() {
 
     echo "Creating stack"
     aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
-    
+
     echo "Finishing Deploying"
 }
 
