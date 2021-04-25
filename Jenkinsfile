@@ -1,8 +1,8 @@
 pipeline {
-    agent { dockerfile true }
+    agent any 
     stages 
     {
-      stage('Stage 1') {
+      stage('test') {
             steps {
                 echo 'Hello world!' 
             }
