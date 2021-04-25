@@ -19,6 +19,8 @@ configure_aws_cli() {
 
 deploy_project() {
 
+    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE
+
     echo "Creating stack"
     aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
     
