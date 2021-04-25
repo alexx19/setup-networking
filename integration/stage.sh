@@ -1,5 +1,9 @@
 # archivo de configuracion despliegue en stage
 #!/usr/bin/env bash
+
+JQ="jq --raw-output --exit-status"
+
+
 export AWS_REGION=us-east-1
 export ENTERPRISE_NAME=rex
 export APPLICATION_NAME=networking
