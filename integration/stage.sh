@@ -14,6 +14,7 @@ configure_aws_cli() {
     aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}
     aws configure set defaul.region ${AWS_REGION}
     aws configure set defaul.output json
+     aws --version list
 }
 
 deploy_project() {
