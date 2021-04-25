@@ -10,8 +10,8 @@ pipeline {
         stage('stage') {
             steps {
                 dir ('integration') {
-                    sh('chmod +x stage.sh')
-                    sh('./stage.sh')
+                    sh 'chmod +x ./stage.sh'
+                    sh './stage.sh'
                 }
             }
         }
