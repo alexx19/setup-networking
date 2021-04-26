@@ -10,7 +10,7 @@ pipeline {
     {
         stage('stage') {
             steps {
-                sh """
+                sh '''
                     #!/usr/bin/env bash
                     JQ="jq --raw-output --exit-status"
 
@@ -44,7 +44,7 @@ pipeline {
                     echo "INFO ------> DEPLOYING NETWORKING... "
                     deploy_project
 
-                """
+                '''
             }
         }
     }
