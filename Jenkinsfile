@@ -14,12 +14,12 @@ pipeline {
                     #!/usr/bin/env bash
                     JQ="jq --raw-output --exit-status"
 
-                    export AWS_REGION=us-east-1
-                    export ENTERPRISE_NAME=rex
-                    export APPLICATION_NAME=networking
-                    export ENVIRONMENT=stage
+                    AWS_REGION=us-east-1
+                    ENTERPRISE_NAME=rex
+                    APPLICATION_NAME=networking
+                    ENVIRONMENT=stage
 
-                    export AWS_INFRA_CLOUDFORMATION_STACK_NAME=${ENTERPRISE_NAME}-${ENVIRONMENT}-${APPLICATION_NAME}
+                    AWS_INFRA_CLOUDFORMATION_STACK_NAME=${ENTERPRISE_NAME}-${ENVIRONMENT}-${APPLICATION_NAME}
 
                     configure_aws_cli() {
                         echo -e "configure AWS CLI"
