@@ -23,16 +23,7 @@ configure_aws_cli() {
 
 deploy_project() {
     echo "Creating stack"
-
-    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE | $JQ '.StackSummaries' | grep --quiet \"${AWS_INFRA_CLOUDFORMATION_STACK_NAME}
-
-    if [[ $? = 1 ]]; then
-        aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml  
-    else
-        echo "Update stack"
-        aws cloudformation update-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml 
-        stop_stack
-    fi
+    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml  
     echo "Finishing Deploying"
 }
 
