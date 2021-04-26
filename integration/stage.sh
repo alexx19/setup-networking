@@ -3,7 +3,6 @@
 
 JQ="jq --raw-output --exit-status"
 
-
 export AWS_REGION=us-east-1
 export ENTERPRISE_NAME=rex
 export APPLICATION_NAME=networking
@@ -23,17 +22,13 @@ configure_aws_cli() {
 }
 
 deploy_project() {
-
-    $( aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE )
-
+    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE
     echo "Creating stack"
-    $( aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml)
-    
+    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
     echo "Finishing Deploying"
 }
 
 echo "INFO ------> CONFIGURE AWS CLI... "
-
 configure_aws_cli
 echo "INFO ------> DEPLOYING NETWORKING... "
 deploy_project
