@@ -27,10 +27,10 @@ deploy_project() {
     aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE | $JQ '.StackSummaries' | grep --quiet \"${AWS_INFRA_CLOUDFORMATION_STACK_NAME}
 
     if [[ $? = 1 ]]; then
-        aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+        aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml --capabilities CAPABILITY_NAMED_AIM
     else
         echo "Update stack"
-        aws cloudformation update-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+        aws cloudformation update-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml --capabilities CAPABILITY_NAMED_AIM
         stop_stack
     fi
     echo "Finishing Deploying"
