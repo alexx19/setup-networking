@@ -9,6 +9,14 @@ pipeline {
 
     stages
     {
+        stage('awscli') {
+            steps {
+                sh 'curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"'
+                sh 'unzip awscli-bundle.zip'
+                sh 'sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws'
+            }
+        }
+
         stage('stage') {
             steps {
                 sh 'chmod +x ./integration/stage.sh'
