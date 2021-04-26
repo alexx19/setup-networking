@@ -3,7 +3,7 @@
 
 set -e
 
-source ./integration/config.sh
+source ./config.sh
 
 export VERSION=$1
 export AWS_INFRA_CLOUDFORMATION_STACK_NAME=${ENTERPRISE_NAME}-${ENVIRONMENT}-${APPLICATION_NAME}
