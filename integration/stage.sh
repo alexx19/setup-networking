@@ -1,5 +1,5 @@
 # archivo de configuracion despliegue en stage
-#!/usr/bin/env bash
+#!/bin/bash
 
 JQ="jq --raw-output --exit-status"
 
