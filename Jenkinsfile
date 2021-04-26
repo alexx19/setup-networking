@@ -1,10 +1,13 @@
 pipeline {
-    agent { dockerfile true }
-    stages 
+    agent any
+    
+    stages
     {
-      stage('Stage 1') {
+        stage('stage') {
             steps {
-                echo 'Hello world!' 
+                sh 'chmod +x ./integration/stage.sh'
+                sh './integration/stage.sh'
             }
         }
     }
+}
