@@ -27,4 +27,4 @@ deploy_project() {
 echo "INFO ------> CONFIGURE AWS CLI... "
 configure_aws_cli
 echo "INFO ------> DEPLOYING NETWORKING... "
-deploy_project
+#deploy_project
