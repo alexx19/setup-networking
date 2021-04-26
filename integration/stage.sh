@@ -17,7 +17,7 @@ configure_aws_cli() {
     aws configure set profile stage
     aws configure set defaul.output json
     aws configure list
-    echo env
+    env
 }
 
 deploy_project() {
