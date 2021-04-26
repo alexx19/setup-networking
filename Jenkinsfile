@@ -12,7 +12,7 @@ pipeline {
         stage('stage') {
             steps {
                 sh 'chmod +x ./integration/stage.sh'
-                sh 'sudo ./integration/stage.sh'
+                sh './integration/stage.sh'
             }
         }
     }
