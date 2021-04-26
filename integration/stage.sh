@@ -1,5 +1,6 @@
 # archivo de configuracion despliegue en stage
 #!/usr/bin/env bash
+JQ="jq --raw-output --exit-status"
 
 set -e
 
@@ -16,14 +17,22 @@ configure_aws_cli() {
     aws configure set defaul.region ${AWS_REGION}
     aws configure set profile stage
     aws configure set defaul.output json
-    aws configure list
+    echo -e "ALL env jenkins"
     env
 }
 
 deploy_project() {
     echo "Creating stack"
-    echo ${AWS_INFRA_CLOUDFORMATION_STACK_NAME}
-    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+
+    aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE UPDATE_ROLLBACK_COMPLETE | $JQ '.StackSummaries' | grep --quiet \"${AWS_INFRA_CLOUDFORMATION_STACK_NAME}
+
+    if [[ $? = 1 ]]; then
+        aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+    else
+        echo "Update stack"
+        aws cloudformation update-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+        stop_stack
+    fi
     echo "Finishing Deploying"
 }
 
