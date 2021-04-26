@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"'
                 sh 'unzip awscli-bundle.zip'
-                sh './awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws'
+                sh './awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws --update'
             }
         }
 
