@@ -21,7 +21,7 @@ configure_aws_cli() {
 deploy_project() {
     echo "Creating stack"
     echo ${AWS_INFRA_CLOUDFORMATION_STACK_NAME}
-    aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml
+    $( aws cloudformation create-stack --stack-name ${AWS_INFRA_CLOUDFORMATION_STACK_NAME} --template-body file://setup-networking.yml)
     echo "Finishing Deploying"
 }
 
